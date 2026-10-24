@@ -1,0 +1,7 @@
+{
+  "name": "File manager",
+  "version": "0.1",
+  "author": "Arklese1zure",
+  "site": "",
+  "description": "A small two-panel file manager with support for basic file operations and a configurable root directory. Intended for accessing frequently-used files.",
+  "features": ["custom tab", "settings panel"]

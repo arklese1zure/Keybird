@@ -1,0 +1,7 @@
+{
+  "name": "Hotstring manager",
+  "version": "0.1",
+  "author": "Arklese1zure",
+  "site": "",
+  "description": "Fully-fledged hostring manager. Lets you add, remove and edit dynamically-loaded hotstrings, via a custom gui, with trigger and case-sensitivity included. Multiple, JSON-based hostring files are supported via a custom settings panel.",
+  "features": ["custom tab", "hotkeys", "menus", "settings panel"]

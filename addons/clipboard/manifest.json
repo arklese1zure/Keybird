@@ -1,0 +1,7 @@
+{
+  "name": "Clipboard manager",
+  "version": "0.1",
+  "author": "Arklese1zure",
+  "site": "",
+  "description": "Basic, text-based clipboard manager with configurable number of entries. Also provides a custom hotkey to send clipboard text as keystrokes.",
+  "features": ["custom tab", "custom hotkeys"]

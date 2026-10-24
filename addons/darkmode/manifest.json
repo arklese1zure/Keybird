@@ -1,0 +1,7 @@
+{
+  "name": "Dark mode toggle",
+  "version": "0.1",
+  "author": "Arklese1zure",
+  "site": "",
+  "description": "Adds a quick toggle to the Addons menu for switching Windows' system theme. Requires Windows 10 1607 or later.",
+  "features": ["addons menu"]

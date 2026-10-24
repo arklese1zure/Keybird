@@ -1,0 +1,7 @@
+{
+  "name": "Scratchpad",
+  "version": "0.1",
+  "author": "Arklese1zure",
+  "site": "",
+  "description": "A small scratchpad for making quick notes, stored as simple txt files.",
+  "features": ["tab", "custom gui"]

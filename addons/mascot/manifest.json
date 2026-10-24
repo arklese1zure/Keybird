@@ -1,0 +1,7 @@
+{
+  "name": "Desktop pet",
+  "version": "0.1",
+  "author": "Arklese1zure",
+  "site": "",
+  "description": "A small, always-on-top, decorative window with an image, sort of like Clippit from old Office.",
+  "features": ["custom gui", "hotkeys", "menus"]

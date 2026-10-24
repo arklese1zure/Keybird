@@ -1,0 +1,8 @@
+{
+  "name": "Snippets manager",
+  "version": "0.1",
+  "author": "Arklese1zure",
+  "site": "",
+  "description": "Gui for managing text snippets, with a triggerable small menu for pasting snippets in any app.",
+  "features": ["tab", "custom gui", "hotkeys"]
+}

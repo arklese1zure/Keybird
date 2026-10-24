@@ -1,0 +1,40 @@
+# =========================================================================
+# Keybird .gitignore
+# =========================================================================
+
+# -- User profile (everything under A_WorkingDir\userprofile) ------------
+# settings.ini, LoadedAddons.ahk, per-addon settings files (e.g. todo.ini),
+# keybird.log (+ .old rotation), and PluginSnippets' snippet folder all
+# live here. Treat the whole tree as user data, not source.
+/userprofile/
+
+# Keep templates so a fresh clone has something to start from.
+!/userprofile/LoadedAddons.ahk.example
+!/userprofile/settings.ini.example
+
+# -- Atomic save artifacts -------------------------------------------------
+# PluginBase.SaveFile(), SaveMainSettings(), and SaveEnabledAddons() all
+# write to path.tmp then copy path.bak before the final move. These can
+# appear anywhere a settings/data file lives, so match globally as a
+# safety net beyond just /userprofile/.
+*.tmp
+*.bak
+
+# -- Compiled AutoHotkey output ----------------------------------------------
+*.exe
+*.bin
+
+# -- OS / drive cruft (this runs off a USB drive) ----------------------------
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+System Volume Information/
+.DS_Store
+._*
+
+# -- Editor cruft -------------------------------------------------------------
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.ahk~
+*.swp

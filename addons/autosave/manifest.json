@@ -1,0 +1,7 @@
+{
+  "name": "Office local auto-save",
+  "version": "0.1",
+  "author": "Arklese1zure",
+  "site": "",
+  "description": "Basic timer-based script that periodically saves open Word, Excel, and PowerPoint documents in the background. Useful when AutoSave is locked behind OneDrive/SharePoint.",
+  "features": ["settings panel"]
