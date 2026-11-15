@@ -33,8 +33,15 @@ System Volume Information/
 ._*
 
 # -- Editor cruft -------------------------------------------------------------
-.vscode/*
-!.vscode/settings.json
-!.vscode/extensions.json
+# Editor settings are per-machine dev setup, not source.
+.vscode/
 *.ahk~
 *.swp
+
+# -- Dev / VM setup ------------------------------------------------------------
+# Watcher script and libvirt share XML live here; kept out of the repo.
+/dev/
+
+# -- Claude context -------------------------------------------------------------
+# Session/project context doc maintained for Claude Code; not project source.
+/context.txt
