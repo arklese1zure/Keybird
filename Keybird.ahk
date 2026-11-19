@@ -55,7 +55,7 @@ StartupCheckUserProfile() ; Check folders for integrity.
 InitializeHooks() ; Initialize hooks so addon functions can be registered.
 
 ;== Include addons ==============================================================
-#Include %A_ScriptDir%\userprofile\loadedaddons.ahk ; Load addons from generated file.
+#Include *i %A_ScriptDir%\userprofile\LoadedAddons.ahk ; Load addons from generated file.
 
 ;== Include scripts and libraries ===============================================
 ;-- Functions -------------------------------------------------------------------
