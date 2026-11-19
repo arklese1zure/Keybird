@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <title>Keybird logo</title>
+  <defs>
+    <!-- Tango palette -->
+    <linearGradient id="capSide" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d3d7cf"/>
+      <stop offset="1" stop-color="#888a85"/>
+    </linearGradient>
+    <linearGradient id="capTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#d3d7cf"/>
+    </linearGradient>
+    <linearGradient id="feather" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fb5e0"/>
+      <stop offset="1" stop-color="#3465a4"/>
+    </linearGradient>
+    <linearGradient id="wing" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3465a4"/>
+      <stop offset="1" stop-color="#204a87"/>
+    </linearGradient>
+    <linearGradient id="breast" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fcaf3e"/>
+      <stop offset="1" stop-color="#f57900"/>
+    </linearGradient>
+    <radialGradient id="dropShadow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#000" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="128" cy="236" rx="100" ry="10" fill="url(#dropShadow)"/>
+
+  <!-- Keycap -->
+  <rect x="34" y="114" width="188" height="116" rx="24" fill="url(#capSide)" stroke="#555753" stroke-width="4"/>
+  <rect x="38" y="118" width="180" height="108" rx="20" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2"/>
+  <rect x="54" y="120" width="148" height="84" rx="16" fill="url(#capTop)" stroke="#babdb6" stroke-width="2"/>
+
+  <!-- Bird's shadow on the keycap -->
+  <ellipse cx="128" cy="136" rx="44" ry="5" fill="#000" fill-opacity="0.18"/>
+
+  <!-- Feet -->
+  <g stroke="#ce5c00" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M118,118 L116,134 M109,134 L123,134"/>
+    <path d="M140,118 L140,134 M133,134 L147,134"/>
+  </g>
+
+  <!-- Beak (drawn before the head so its base is covered) -->
+  <path d="M172,60 L200,70 L172,82 Z" fill="#fcaf3e" stroke="#ce5c00" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M174,71 L198,70" stroke="#ce5c00" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Body outline layer: same shapes, stroked, underneath the fills -->
+  <g stroke="#204a87" stroke-width="7" stroke-linejoin="round" fill="#204a87">
+    <path d="M96,90 L50,64 Q42,80 58,92 Q44,102 54,110 L98,114 Z"/>
+    <ellipse cx="122" cy="96" rx="50" ry="30"/>
+    <circle cx="154" cy="68" r="28"/>
+  </g>
+  <!-- Body fill layer -->
+  <g fill="url(#feather)">
+    <path d="M96,90 L50,64 Q42,80 58,92 Q44,102 54,110 L98,114 Z"/>
+    <ellipse cx="122" cy="96" rx="50" ry="30"/>
+    <circle cx="154" cy="68" r="28"/>
+  </g>
+
+  <!-- Breast -->
+  <path d="M168,80 Q174,104 152,120 Q130,124 124,112 Q140,104 146,86 Q156,78 168,80 Z" fill="url(#breast)"/>
+
+  <!-- Wing -->
+  <path d="M84,94 Q104,72 138,86 Q136,112 104,116 Q86,112 84,94 Z" fill="url(#wing)" stroke="#204a87" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M100,98 Q114,92 128,96 M98,106 Q110,102 122,104" stroke="#729fcf" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7"/>
+
+  <!-- Eye -->
+  <circle cx="162" cy="62" r="6.5" fill="#2e3436"/>
+  <circle cx="164.5" cy="59.5" r="2.2" fill="#ffffff"/>
+
+  <!-- Gloss highlight -->
+  <ellipse cx="146" cy="52" rx="14" ry="8" fill="#ffffff" fill-opacity="0.35" transform="rotate(-20 146 52)"/>
+</svg>
