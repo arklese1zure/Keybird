@@ -10,15 +10,20 @@
   <img src="docs/images/main.png" alt="Keybird main window">
 </p>
 
-Keybird is a small, modular utility program that aims to aid the user in day-to-day report writing by providing text expansion, boilerplate text snippets and other tools via an extensible plugin interface.
-The program leverages AutoHotkey's powerful automation scripting while providing an easily understandable and always-present interface.
+> [!NOTE]
+> Keybird is a small, modular, utility program that aims to aid the user in day-to-day report writing by providing text expansion, boilerplate text snippets and other tools via an extensible plugin interface. The program leverages AutoHotkey's powerful scripting while providing an easily understandable and always-present interface.
+> his is a continuation of my AHKV1-based MedMacros script (archived repo).
 
-## Functions
+
+## Core functions
+### Plugin architecture
+Keybird's core goal is to provide a multi-function, extensible and small interface that's always accessible. Think of it as small Swiss army knife for everyday tasks, except you can add or remove tools as needed. This is achieved via an "addon" system, which is a small script loader with hooks that trigger your script during specific moments. See *docs/Developer*.
+
 ### Hotkey manager
-Keybird and its addons can register hotkeys, which are keyboard key combinations that can be pressed to perform a variety of tasks. These are all listed in their respective settings panel, and can also be configured and turned on/off (see *settings* section).
+Keybird and its addons can register hotkeys via a centralized manager that lets the user customize and activate or deactivate them (see *settings* section).
 
 ### The main window
-Keybird's main window (pictured above) consists of a simple, tabbed interface, with a menu bar.
+Keybird's main window (pictured above) consists of a simple, tabbed interface, with some buttons that act as a menu bar.
 
 > [!NOTE]
 > **Special window properties**
@@ -31,7 +36,7 @@ The "tabs" (represented by the icons), can also be right-clicked for extra optio
 The tab switcher can be customized. You can add a background image in settings (see *settings* section).
 
 ### System tray
-The system tray \[pending]
+Besides hotkeys, you can quickly interact with Keybird via the system tray menu. Common options are shown here, and can be triggered even when the main window is hidden.
 
 ### System functions
 #### Stay awake
