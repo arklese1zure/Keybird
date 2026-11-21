@@ -12,7 +12,7 @@
 
 > [!NOTE]
 > Keybird is a small, modular, utility program that aims to aid the user in day-to-day report writing by providing text expansion, boilerplate text snippets and other tools via an extensible plugin interface. The program leverages AutoHotkey's powerful scripting while providing an easily understandable and always-present interface.
-> his is a continuation of my AHKV1-based MedMacros script (archived repo).
+> This script is a continuation of my AHKV1-based MedMacros script (archived repo).
 
 
 ## Core functions
