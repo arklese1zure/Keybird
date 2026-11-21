@@ -71,7 +71,6 @@ InitializeHooks() ; Initialize hooks so addon functions can be registered.
 ;-- Libraries -------------------------------------------------------------------
 #Include %A_ScriptDir%\lib\ListViewExtensions.ahk
 #Include %A_ScriptDir%\lib\GuiButtonIcon.ahk
-#Include %A_ScriptDir%\lib\String.ahk
 #Include %A_ScriptDir%\lib\RichEdit.ahk
 #Include %A_ScriptDir%\lib\RichEditDlgs.ahk
 #Include %A_ScriptDir%\lib\JSON.ahk

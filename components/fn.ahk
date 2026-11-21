@@ -21,6 +21,13 @@ SortedArray(arr) { ; Sort array alphabetically.
 }
 
 ;## Strings #####################################################################
+StrJoin(sep, items*) { ; Join values with a separator, e.g. StrJoin(", ", arr*) -> "a, b, c".
+	out := ""
+	for i, item in items
+		out .= (i > 1 ? sep : "") item
+	return out
+}
+
 RemoveAccents(text) { ; Remove accentuated characters from any string.
     static replacements := [ ; Static ensures the array is only built once. For improving performance.
         ["[áàâäãå]", "a"], ["[ÁÀÂÄÃÅ]", "A"],

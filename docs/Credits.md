@@ -12,9 +12,6 @@
 	- GuiControl_Ex concept by [TheArkive](https://www.autohotkey.com/boards/viewtopic.php?f=83&t=86124)
 	- Tile-view functions: idea by segalion, based on code by Fabio Lucarelli
 - [GuiButtonIcon.ahk](https://www.autohotkey.com/boards/), by Fanatic Guru
-- [String.ahk](https://github.com/Descolada/AHK-v2-libraries), by Descolada
-	- Based in part on "String Things" by tidbit
-	- Contributors: Axlefublr, neogna2
 - [Gdip_All.ahk](https://www.autohotkey.com/boards/) — AutoHotkey GDI+ wrapper, community-maintained
 	- Version maintained by Rseding91
 	- v2 port by guest3456

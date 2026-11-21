@@ -262,7 +262,7 @@ FormatAddonInfo(addonFolder) { ; Parse addon's manifest object and output as the
 	if manifest.minKeybirdVersion
 		info .= "`n`nRequires Keybird >= " manifest.minKeybirdVersion
 	if manifest.features.Length
-		info .= "`n`nFeatures: " ", ".Concat(manifest.features*)
+		info .= "`n`nFeatures: " StrJoin(", ", manifest.features*)
 	return info
 }
 
