@@ -44,13 +44,13 @@ class PluginHotstrings extends PluginBase {
 		this.LV_hotstrings.ModifyCol(2, 400)
 		
 		;-- Buttons ---------------------------------------------------------------------
-		BtnContextMenu := mainGui.Add("Button", "w25 h25 xp y310")
+		BtnContextMenu := mainGui.Add("Button", "w25 h" main_bar_h " xp y" main_bar_y)
 			GuiButtonIcon(BtnContextMenu, iconsDir "\categories\applications-system.ico", 1, "s16")
 			BtnContextMenu.OnEvent("Click", ObjBindMethod(this, "HotstringsContextMenuButton"))
-		BtnAddHotstring := mainGui.Add("Button", "w25 h25 x+1")
+		BtnAddHotstring := mainGui.Add("Button", "w25 h" main_bar_h " x+1")
 			GuiButtonIcon(BtnAddHotstring, iconsDir "\actions\list-add.ico", 1, "s16")
 			BtnAddHotstring.OnEvent("Click", ObjBindMethod(this, "AddHotstring"))
-		BtnDeleteHotstring := mainGui.Add("Button", "w25 h25 x+1")
+		BtnDeleteHotstring := mainGui.Add("Button", "w25 h" main_bar_h " x+1")
 			GuiButtonIcon(BtnDeleteHotstring, iconsDir "\actions\list-remove.ico", 1, "s16")
 			BtnDeleteHotstring.OnEvent("Click", ObjBindMethod(this, "RemoveHotstring"))
 	}
@@ -73,10 +73,8 @@ class PluginHotstrings extends PluginBase {
 		
 		;-- Hotstrings file options -----------------------------------------------------
 		SettingsGui.Add("GroupBox",								"x" settings_tab_x0 " y155 w225 h77",		this.T("options"))
-		;BtnDeleteHSFile := SettingsGui.Add("Button",			"xp+7 yp+20 w80",	this.T("settings_btn_delete"))
 		BtnDeleteHSFile := SettingsGui.Add("Button",			"xp+7 yp+20 w90",	this.T("settings_btn_delete"))
 			BtnDeleteHSFile.OnEvent("Click", DummyFunction)
-		;BtnNewHSFile := SettingsGui.Add("Button",				"x+7 yp w80",			this.T("settings_btn_newdict"))
 		BtnNewHSFile := SettingsGui.Add("Button",				"y+5 w90",			this.T("settings_btn_newdict"))
 			BtnNewHSFile.OnEvent("Click", ObjBindMethod(this, "NewHotstringFile"))
 		

@@ -15,7 +15,7 @@ FileEncoding "UTF-8" ; Unicode UTF-8, equivalent to CP65001.
 
 ProgramInfo := {
 	Name:		"Keybird",
-	Version:	"0.1.0",				; Current version. Release tags on GitHub must match it (e.g. v0.1.0) for update checks.
+	Version:	"0.1.1",				; Current version. Release tags on GitHub must match it (e.g. v0.1.0) for update checks.
 	Repo:		"arklese1zure/Keybird"	; GitHub "owner/repo" that update checks look at.
 }
 

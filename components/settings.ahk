@@ -244,9 +244,13 @@ FillAvailableAddonsLV(*) { ; Fill available addons listview
 
 GetAddonInfo(GuiCtrlObj, Item, *) { ; ItemFocus handler for both the available and enabled addons ListViews.
 	global AddonInfoBox, addonsFolder
-	if !Item
+	; ItemFocus also fires when a row is deleted (focus shifts to a neighbour). The event can run after
+	; Delete() has finished, so Item may point past the end of the list; GetText() would then throw "Failed".
+	if !Item || Item > GuiCtrlObj.GetCount()
 		return
-	addonName := GuiCtrlObj.GetText(Item)
+	try addonName := GuiCtrlObj.GetText(Item)
+	catch
+		return
 	AddonInfoBox.Value := FormatAddonInfo(addonsFolder "\" addonName)
 }
 
