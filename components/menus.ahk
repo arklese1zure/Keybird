@@ -29,6 +29,7 @@ BuildMainGuiMenus(*) { ; Build all the main gui's menus.
 	global HelpMenu := Menu() ;==Help menu=======================================
 	HelpMenu.Add(T("tray_user_manual"), (*) => BuildHelpViewer("frontpage.md"))
 	HelpMenu.Add() ;-------------------------------------------------------------
+	HelpMenu.Add(T("tray_check_updates"), (*) => Updater.CheckNow())
 	HelpMenu.Add(T("tray_about"), (*) => BuildHelpViewer("about.md"))
 }
 

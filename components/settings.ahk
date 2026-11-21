@@ -67,6 +67,7 @@ BuildSettingsGuiTabs(*) { ; Build the panels where settings reside.
 		SettingsGui.Add("GroupBox",								"x366 y30 w239 h124",									T("gb_settings_startup")) ; Startup settings
 		global ChkDisableSleep := SettingsGui.Add("CheckBox",	"x374 y45 w228 h23 Checked" startup_disablestandby,		T("chkDisableSleep")) ; Disable sleep
 		global ChkStartHidden := SettingsGui.Add("CheckBox",	"x374 y+1 w226 h23 Checked" startup_mainguihidden,		T("chkStartHidden")) ; Hidden main window
+		global ChkCheckUpdates := SettingsGui.Add("CheckBox",	"x374 y+1 w226 h23 Checked" update_autocheck,			T("chkCheckUpdates")) ; Automatic update checks
 		;-- Language settings ---------------------------------------------------
 		SettingsGui.Add("GroupBox",								"x366 y160 w239 h94",									T("gb_settings_lang")) ; Language
 		global DDLLanguage := SettingsGui.Add("DropDownList",	"x376 y175 w220",										BuildLanguageList())
@@ -337,7 +338,7 @@ SaveAllSettings(*) { ; Save settings from both the main script and any addons.
 }
 
 SaveMainSettings(*) { ; Submit all selections and write to the settings file.
-	global settingsFile, ChkShowControls, ChkTrayIcon, ChkShowInTaskbar, ChkSaveScreenPos, ChkDragWindows, ChkDisableSleep, ChkStartHidden, DDLLanguage
+	global settingsFile, ChkShowControls, ChkTrayIcon, ChkShowInTaskbar, ChkSaveScreenPos, ChkDragWindows, ChkDisableSleep, ChkStartHidden, ChkCheckUpdates, DDLLanguage
 	
 	; Check if folders are accessible, otherwise refuse to save.
 	if !IsWorkingDirAccessible() {
@@ -364,6 +365,7 @@ SaveMainSettings(*) { ; Submit all selections and write to the settings file.
 		;-- Startup -----------------------------------------------------------------
 		IniWrite ChkDisableSleep.Value,			tempFile, "StartupSettings",	"startup_disablestandby"
 		IniWrite ChkStartHidden.Value,			tempFile, "StartupSettings",	"startup_mainguihidden"
+		IniWrite ChkCheckUpdates.Value,			tempFile, "UpdateSettings",		"update_autocheck"
 		;-- Language ----------------------------------------------------------------
 		IniWrite DDLLanguage.Text,				tempFile, "AppSettings",		"language"
 		;-- Sidebar background ------------------------------------------------------
@@ -449,6 +451,10 @@ ReadSettings(*) {
 		global startup_alwaysontop :=			IniRead(settingsFile, "StartupSettings", "startup_alwaysontop", TRUE)
 		;-- Language ----------------------------------------------------------------
 		global active_language :=				IniRead(settingsFile, "AppSettings", "language", "en_us")
+		;-- Updates -----------------------------------------------------------------
+		global update_autocheck :=				IniRead(settingsFile, "UpdateSettings", "update_autocheck", TRUE)
+		global update_lastcheck :=				IniRead(settingsFile, "UpdateSettings", "update_lastcheck", "")
+		global update_notifiedversion :=		IniRead(settingsFile, "UpdateSettings", "update_notifiedversion", "")
 	} catch as Err {
 		; If the settings file exists but can't be read, fall back to defaults for this session.
 		Log("Settings file could not be read, using defaults for this session: " Err.Message, "WARN", "ReadSettings")
@@ -464,6 +470,9 @@ ReadSettings(*) {
 		global startup_mainguihidden := TRUE
 		global startup_alwaysontop := TRUE
 		global active_language := "en_us"
+		global update_autocheck := TRUE
+		global update_lastcheck := ""
+		global update_notifiedversion := ""
 	}
 }
 

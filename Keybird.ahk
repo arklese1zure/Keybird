@@ -14,7 +14,9 @@ FileEncoding "UTF-8" ; Unicode UTF-8, equivalent to CP65001.
 ; Helper variables so developers can add gui elements inside main tabs easier.
 
 ProgramInfo := {
-    Name: "Keybird"
+	Name:		"Keybird",
+	Version:	"0.1.0",				; Current version. Release tags on GitHub must match it (e.g. v0.1.0) for update checks.
+	Repo:		"arklese1zure/Keybird"	; GitHub "owner/repo" that update checks look at.
 }
 
 ;-- Main tab layout -------------------------------------------------------------
@@ -68,6 +70,7 @@ InitializeHooks() ; Initialize hooks so addon functions can be registered.
 #Include %A_ScriptDir%\components\settings.ahk
 #Include %A_ScriptDir%\components\guilocker.ahk
 #Include %A_ScriptDir%\components\docsviewer.ahk
+#Include %A_ScriptDir%\components\updater.ahk
 ;-- Libraries -------------------------------------------------------------------
 #Include %A_ScriptDir%\lib\ListViewExtensions.ahk
 #Include %A_ScriptDir%\lib\GuiButtonIcon.ahk
@@ -147,6 +150,9 @@ OnMessage 0x204,	WM_RBUTTONDOWN ; Monitor for right clicks on GUI.
 GuiLocker.InitLock() ; If lock-on-startup is enabled, InitLock() leaves the main gui hidden and shows the password prompt.
 if (!GuiLocker.isLocked && startup_mainguihidden != TRUE) ; If not locked and not set up to start hidden, reveal the window.
 	SetMainWindowVisible(TRUE)
+
+;== Update check ================================================================
+Updater.Start() ; Checks GitHub for a newer release a few seconds after startup (updater.ahk).
 
 ;## Functions ###################################################################
 ;== Startup functions ===========================================================
