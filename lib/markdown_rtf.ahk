@@ -45,11 +45,12 @@
 ; embeds, and ![alt|300](image.png) width hints. A ![[note]] embed of a
 ; non-image shows as "[Embed: note]".
 ;
-; Images: PNG and JPEG files (the format is detected from the file's header, not
-; its extension) are decoded with GDI+ and embedded as 24-bit \dibitmap0
-; pictures, transparency flattened onto white: RichEdit (Msftedit) does not draw
-; \pngblip / \jpegblip pictures. They are scaled down - never up - to
-; opts.maxWidth, keeping the aspect ratio. Pass an options object to turn this on:
+; Images: PNG, JPEG, GIF (first frame only) and BMP files - the format is
+; detected from the file's header, not its extension - are decoded with GDI+
+; and embedded as 24-bit \dibitmap0 pictures, transparency flattened onto
+; white: RichEdit (Msftedit) does not draw \pngblip / \jpegblip pictures.
+; They are scaled down - never up - to opts.maxWidth, keeping the aspect
+; ratio. Pass an options object to turn this on:
 ;
 ;     MarkdownToRTF(md, false, {baseDir: "C:\kb\docs"        ; REQUIRED for images: relative paths start here
 ;                              , maxWidth: 8000              ; twips (1440 = 1 inch); default 8000
@@ -64,7 +65,7 @@
 ; "[Image: alt]". Remote (http/https) images are never downloaded; they show
 ; as "[Image: alt (url)]". An image that cannot be shown always leaves a visible
 ; italic note saying why: "[Image missing: x]", "[Image format not supported:
-; x]" (GIF, BMP, SVG, WebP...), "[Image too large: x]", "[Image could not be
+; x]" (SVG, WebP, TIFF...), "[Image too large: x]", "[Image could not be
 ; loaded: x]" or "[Image not shown, too many pictures on this page: x]" - it
 ; never silently disappears. Images inside table cells stay
 ; as "[Image: alt]" notes, because tables are monospaced text.
@@ -1373,6 +1374,22 @@ MdImageNode(src, alt, hintW, hintH, style) {
 		&& NumGet(buf, 2, "UChar") = 0xFF) {			; JPEG
 		if MdJpegSize(buf, &pxW, &pxH)
 			kind := "jpeg"
+	} else if (buf.Size >= 10 && NumGet(buf, 0, "UInt") = 0x38464947		; "GIF8", then "7a" or "9a"
+		&& (NumGet(buf, 4, "UChar") = 0x37 || NumGet(buf, 4, "UChar") = 0x39) && NumGet(buf, 5, "UChar") = 0x61) {
+		kind := "gif"											; animated: GDI+ draws the first frame
+		pxW := NumGet(buf, 6, "UShort")
+		pxH := NumGet(buf, 8, "UShort")
+	} else if (buf.Size >= 26 && NumGet(buf, 0, "UShort") = 0x4D42) {	; "BM"
+		hdrSize := NumGet(buf, 14, "UInt")
+		if (hdrSize = 12) {										; BITMAPCOREHEADER (OS/2)
+			pxW := NumGet(buf, 18, "UShort")
+			pxH := NumGet(buf, 20, "UShort")
+		} else if (hdrSize >= 40) {								; BITMAPINFOHEADER and later
+			pxW := NumGet(buf, 18, "Int")
+			pxH := Abs(NumGet(buf, 22, "Int"))					; negative = rows stored top-down
+		}
+		if (pxW > 0 && pxH > 0)
+			kind := "bmp"
 	}
 	if (kind = "" || pxW < 1 || pxH < 1 || pxW > 32000 || pxH > 32000) {
 		MdWarn("Image format not supported or damaged: " path)
@@ -1430,7 +1447,7 @@ MdImageNode(src, alt, hintW, hintH, style) {
 	return nd
 }
 
-; Decodes a PNG/JPEG file image (buf) with GDI+, scaled to bmpW x bmpH, and returns
+; Decodes a PNG/JPEG/GIF/BMP file image (buf) with GDI+, scaled to bmpW x bmpH, and returns
 ; the hex text of a packed 24-bit DIB (BITMAPINFOHEADER + bottom-up rows of stride
 ; bytes) for \dibitmap0, or "" with the reason in why. Transparency is flattened
 ; onto white.
