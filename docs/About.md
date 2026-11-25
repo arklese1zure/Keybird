@@ -1,6 +1,6 @@
 # Keybird
 ### Version 0.7
-![logo](logo.png)
+![logo](images/logo.png)
 
 ### Author
 - Arklese1zure
