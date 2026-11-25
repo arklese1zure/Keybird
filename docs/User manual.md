@@ -1,30 +1,53 @@
 # KeyBird - User manual
+
 ## Introduction
+
 Keybird is a small, modular, utility program that aims to aid the user in day-to day report writing, by providing text expansion, boilerplate text snippers and other tools via an extensible plugin interface.
+
 The program leverages AutoHotkey's powerful automation scripting while providing an easily understandable and always present interface.
+
 ## User files
+
 All files the user has generated, including configurations and files generated from addons, live in the "user profile" folder (located in `Keybird\userprofile`.
+
 ### Error logging
+
 For ease of bug reporting, error handling includes a log that is generated in `Keybird\userprofile\keybird.log`.
+
 ## Main Functions
+
 ### Hotkeys
+
 Keybird and its addons can register hotkeys, which are keyboard key combinations that can be pressed to perform a variety of tasks. These are all listed in their respective settings panel, and can also be configured and turned on/off (see *settings* section).
+
 ### The main window
+
 Keybird's main window consists of a simple, tabbed interface, with a menu bar.
-![[main.png]]
+
+![The main window](images/main.png)
 
 > [!info] Special window properties
 > The main window can be configured to stay always on top, and to be transparent when not in focus. It can also be set to hide/unhide using a hotkey or another trigger, or it can be minimized to the taskbar if you prefer that method (see *settings* section).
+
 #### Tab switcher
+
 The tab switcher contains all functions that can be quickly accessed in the main window. Most of these are provided via addons, and have varied functions, such as a to-do list, a notepad, or other utilities.
+
 The "tabs" (represented by the icons), can also be right-clicked for extra options and for performing quick tasks.
+
 The tab switcher can be customized. You can add a background image in settings (see *settings* section).
+
 ### System tray
-The system tray 
+
+The system tray
+
 ### System functions
+
 #### Stay awake
+
 A toggleable function that prevents the system from suspending or going to the lockscreen. This function can be triggered from the main menu, or from the system tray menu.
 
+```ahk
 ;== System tray =================================================================
 A_TrayMenu.Default := "" ; Suppress default action on tray icon single-click.
 UpdateTrayTooltip() ; Set initial tray tooltip.
@@ -335,3 +358,4 @@ WM_RBUTTONDOWN(wParam, lParam, msg, hwnd) { ; Monitor if a specific gui window i
 global rightclickguihwnd := hwnd ; Store currently clicked GUI in a global variable.
 	OnGuiRightClick() ; Hook for doing things when right-clicking the gui.
 }
+```

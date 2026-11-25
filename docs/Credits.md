@@ -17,6 +17,7 @@
 	- v2 port by guest3456
 	- MDMF monitor functions by just me
 	- WinGetRect based on work by dd900 and Frosti
+- markdown_rtf.ahk — Markdown renderer for the help viewer. Block and inline parsing design ported from [AhkWord](https://github.com/burque505/AhkWord)'s rte_markdown6.cs, by burque505 (MIT License, Copyright (c) 2026 burque505)
 
 ## Resources
 - [Tango Desktop Project, Icons for Everyone](https://tekeye.uk/free_resources/tango_desktop_project/index)

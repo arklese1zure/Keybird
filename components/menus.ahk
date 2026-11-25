@@ -27,10 +27,10 @@ BuildMainGuiMenus(*) { ; Build all the main gui's menus.
 	A_TrayMenu.Default := MenuLabel(A_TrayMenu, "disable_sleep")
 		
 	global HelpMenu := Menu() ;==Help menu=======================================
-	HelpMenu.Add(T("tray_user_manual"), (*) => BuildHelpViewer("frontpage.md"))
+	HelpMenu.Add(T("tray_user_manual"), (*) => BuildHelpViewer("Frontpage.md"))
 	HelpMenu.Add() ;-------------------------------------------------------------
 	HelpMenu.Add(T("tray_check_updates"), (*) => Updater.CheckNow())
-	HelpMenu.Add(T("tray_about"), (*) => BuildHelpViewer("about.md"))
+	HelpMenu.Add(T("tray_about"), (*) => BuildHelpViewer("About.md"))
 }
 
 ;## Menu item registry ###########################################################
